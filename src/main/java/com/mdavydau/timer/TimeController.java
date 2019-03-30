@@ -1,5 +1,6 @@
 package com.mdavydau.timer;
 
+import com.mdavydau.timer.model.Response;
 import com.mdavydau.timer.scheduler.CounterScheduler;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -21,17 +22,28 @@ public class TimeController {
     private Logger logger = LoggerFactory.getLogger(TimeController.class);
 
     @RequestMapping()
-    public String index(HttpSession session) {
+    public Response index(HttpSession session) {
 
         String sessionId = session.getId();
 
-        logger.info("Session {}", sessionId);
+        logger.debug("Session {}", sessionId);
 
         if (StringUtils.isBlank(sessionId)) sessionId = UUID.randomUUID().toString();
 
         long now = DateTime.now().getMillis();
-        CounterScheduler.getDisturbMap().putIfAbsent(sessionId, now);
-        return String.valueOf(CounterScheduler.getCount());
+        Long ifAbsent = CounterScheduler.getDisturbMap().putIfAbsent(sessionId, now);
+
+        if (ifAbsent == null) {
+            //new user
+            CounterScheduler.setCount(CounterScheduler.getCount() + 1);
+        }
+
+        Response response = new Response();
+        response.setCount(CounterScheduler.getCount());
+        response.setSec(CounterScheduler.getSec());
+        response.setStart(CounterScheduler.getStart().getMillis());
+
+        return response;
     }
 
 }

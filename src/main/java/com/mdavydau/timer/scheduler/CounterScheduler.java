@@ -19,21 +19,35 @@ public class CounterScheduler {
     private Logger logger = LoggerFactory.getLogger(CounterScheduler.class);
 
     private static Map<String, Long> disturbMap = new HashMap<>();
+    private static Integer sec = 0;
+    private static DateTime start = DateTime.now();
     private static Integer count = 0;
 
     @Scheduled(fixedDelay = 1000)
     public void count() {
         int size = disturbMap.size();
-        logger.info("Counter Cron millis {} map size {}", DateTime.now().getMillis(), size);
-        count += size;
-        logger.info("Counter Cron count {}", count);
+        logger.debug("Counter Cron millis {} map size {}", DateTime.now().getMillis(), size);
+        sec += size;
+        logger.debug("Counter Cron sec {}", sec);
     }
 
     public static Map<String, Long> getDisturbMap() {
         return disturbMap;
     }
 
+    public static Integer getSec() {
+        return sec;
+    }
+
+    public static DateTime getStart() {
+        return start;
+    }
+
     public static Integer getCount() {
         return count;
+    }
+
+    public static void setCount(Integer count) {
+        CounterScheduler.count = count;
     }
 }

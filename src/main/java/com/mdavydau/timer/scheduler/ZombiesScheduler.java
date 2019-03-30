@@ -25,7 +25,7 @@ public class ZombiesScheduler {
 
         disturbMap.entrySet().removeIf(stringLongEntry -> stringLongEntry.getValue() < now30);
 
-        logger.info("Kill Cron millis {} map size {}", DateTime.now().getMillis(), disturbMap.size());
+        logger.debug("Kill Cron millis {} map size {}", DateTime.now().getMillis(), disturbMap.size());
     }
 
 }

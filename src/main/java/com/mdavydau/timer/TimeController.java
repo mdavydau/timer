@@ -41,7 +41,7 @@ public class TimeController {
         Response response = new Response();
         response.setCount(CounterScheduler.getCount());
         response.setSec(CounterScheduler.getSec());
-        response.setStart(CounterScheduler.getStart().getMillis());
+        response.setStart(CounterScheduler.getStart());
 
         return response;
     }

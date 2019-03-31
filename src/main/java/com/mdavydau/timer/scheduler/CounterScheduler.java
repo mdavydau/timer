@@ -19,9 +19,8 @@ public class CounterScheduler {
     private Logger logger = LoggerFactory.getLogger(CounterScheduler.class);
 
     private static Map<String, Long> disturbMap = new HashMap<>();
-    private static Integer sec = 0;
-    private static DateTime start = DateTime.now();
-    private static Integer count = 0;
+    private static Integer sec = 2220;
+    private static Integer count = 64;
 
     @Scheduled(fixedDelay = 1000)
     public void count() {
@@ -39,8 +38,8 @@ public class CounterScheduler {
         return sec;
     }
 
-    public static DateTime getStart() {
-        return start;
+    public static Long getStart() {
+        return 1553968800000L;
     }
 
     public static Integer getCount() {

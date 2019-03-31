@@ -42,6 +42,7 @@ public class TimeController {
         response.setCount(CounterScheduler.getCount());
         response.setSec(CounterScheduler.getSec());
         response.setStart(CounterScheduler.getStart());
+        response.setMultiply(CounterScheduler.getDisturbMap().size());
 
         return response;
     }

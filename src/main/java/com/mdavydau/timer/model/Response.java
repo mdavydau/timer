@@ -17,4 +17,5 @@ public class Response {
     private Integer sec;
     private Long start;
     private Integer count;
+    private Integer multiply;
 }

@@ -40,8 +40,7 @@
 
     <p class="center">
         </br>
-        <small>*</small>
-        я учитываю каждую секунду каждого человека кто сейчас на сайте, и отображаю это в поле <b>(xN)</b>
+        <small>*</small>я учитываю каждую секунду каждого кто сейчас на сайте онлайн, и отображаю это в поле <b>(xN)</b>
     </p>
 </div>
 <script>
@@ -65,7 +64,7 @@
         var milliseconds = parseInt((duration % 1000) / 100),
             seconds = Math.floor((duration / 1000) % 60),
             minutes = Math.floor((duration / (1000 * 60)) % 60),
-            hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+            hours = Math.floor((duration / (1000 * 60 * 60)));
 
         hours = (hours < 10) ? "0" + hours : hours;
         minutes = (minutes < 10) ? "0" + minutes : minutes;

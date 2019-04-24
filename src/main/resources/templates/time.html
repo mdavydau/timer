@@ -48,7 +48,7 @@
     setInterval(function () {
         var response = httpGet("172.31.36.249:8080/time");
         document.getElementById("alive").innerHTML = msToTime(new Date().getTime() - response.start);
-        document.getElementById("disturb").innerHTML = " За это время " + response.count + " человек(а) уже потратили здесь </br>" + msToTime(response.sec * 1000) + "(x" + response.multiply + ")";
+        document.getElementById("disturb").innerHTML = " За это время " + response.count + " человек уже потратили здесь </br>" + msToTime(response.sec * 1000) + "(x" + response.multiply + ")";
     }, 1000);
 
     function httpGet(url) {
